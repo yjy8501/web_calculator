@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="계산기.css">
+    <title>계산기</title>
+    <script>
+       var wid = 443;
+var higt = 350;
+var fwid = 445;
+var fhigt = 350;
+var bwid = 80;
+var bhigt = 50;
+var ewid = 410;
+var ehigt = 40;
+var font_s=20;
+var buttonid = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "zero", "root", "squared", "mul",
+    "c", "ce", "back", "equal", "div", "plus", "minus", "sin", "cos", "tan", "browserplu", "browsermin"]
+
+function backward() {
+    var exp = document.getElementById("exp");
+    var len = exp.value.length;
+    if (len == 0)
+        return;
+    else
+        exp.value = exp.value.substr(0, len - 1);
+}
+
+function clearexp() {
+    var exp = document.getElementById("exp");
+    exp.value = "0";
+}
+
+function addInput(value) {
+    var exp = document.getElementById("exp");
+    if (exp.value == "0")
+        exp.value = value;
+    else
+        exp.value += value;
+}
+
+function calulate() {
+    var exp = document.getElementById("exp");
+    exp.value = eval(exp.value);
+}
+
+function Squared() {
+    var exp = document.getElementById("exp");
+    exp.value = exp.value * 1;
+    exp.value = Math.pow(exp.value, 2);
+}
+
+function Root() {
+    var exp = document.getElementById("exp");
+    exp.value = exp.value * 1;
+    exp.value = Math.sqrt(exp.value);
+}
+
+function Sin() {
+    var exp = document.getElementById("exp");
+    exp.value = exp.value * 1;
+    exp.value = Math.sin(exp.value);
+}
+
+function Sin() {
+    var exp = document.getElementById("exp");
+    exp.value = exp.value * 1;
+    exp.value = Math.sin(exp.value);
+}
+
+function Cos() {
+    var exp = document.getElementById("exp");
+    exp.value = exp.value * 1;
+    exp.value = Math.cos(exp.value);
+}
+
+function Tan() {
+    var exp = document.getElementById("exp");
+    exp.value = exp.value * 1;
+    exp.value = Math.tan(exp.value);
+}
+
+function Browserplu() {
+
+    var table = document.getElementById("table");
+    var form = document.getElementById("form");
+    var exp = document.getElementById("exp");
+
+    font_s = font_s + 0.4;
+    wid++;
+    higt++;
+    fwid++;
+    fhigt++;
+    ewid = ewid + 0.188888888;
+    ehigt = ehigt + 0.188888888;
+    bwid = bwid + 0.188888888;
+    bhigt = bhigt + 0.188888888;
+
+    for (var i = 0; i < 25; i++) {
+        var button = document.getElementById(buttonid[i]);
+
+        button.style.width = bwid + "px";
+        button.style.height = bhigt + "px";
+
+    }
+
+
+    form.style.width = fwid + "px";
+    form.style.height = fhigt + "px";
+    table.style.width = wid + "px";
+    table.style.height = higt + "px";
+    button.style.width = bwid + "px";
+    button.style.height = bhigt + "px";
+    exp.style.width =ewid + "px";
+    exp.style.height =ehigt + "px";
+    exp.style.fontSize =font_s + "px"
+}
+
+function Browsermin() {
+    var table = document.getElementById("table");
+    var form = document.getElementById("form");
+    var exp = document.getElementById("exp");
+
+    if (bwid <= 80) {
+        alert("더 이상 작아질 수 없습니다.");
+    }
+
+
+    else {
+
+        wid--;
+        higt--;
+        fwid--;
+        fhigt--;
+        bwid = bwid - 0.188888888;
+        bhigt = bhigt - 0.188888888;
+        ewid = ewid - 0.188888888;
+        ehigt = ehigt - 0.188888888;
+        font_s = font_s - 0.4;
+
+        for (var i = 0; i < 25; i++) {
+            var button = document.getElementById(buttonid[i]);
+
+            button.style.width = bwid + "px";
+            button.style.height = bhigt + "px";
+
+        }
+
+        form.style.width = fwid + "px";
+        form.style.height = fhigt + "px";
+        table.style.width = wid + "px";
+        table.style.height = higt + "px";
+        button.style.width = bwid + "px";
+        button.style.height = bhigt + "px";
+        exp.style.width =ewid + "px";
+        exp.style.height =ehigt + "px";
+        exp.style.fontSize =font_s + "px"
+
+    }
+
+    
+}
+    </script>
+</head>
+
+<body style="background-color: #66aaf7">
+        <h2 style="text-align: center; color: white;"><span style="text-shadow: 1px 1px 7px black;">계산기</span></h2>
+    
+        <form id="form">
+          <table id="table" style="box-shadow: 5px 5px 7px black;">
+            <tr>
+              <td colspan="5"><input type="text" id="exp" value="0" size="45"></td>
+            </tr>
+            <tr>
+              <td><input type="button" id="back" value="BACK" onclick="backward()"></td>
+              <td><input type="button" id="ce" value="CE" onclick="clearexp()"></td>
+              <td><input type="button" id="c" value="C" onclick="clearexp()"></td>
+              <td><input type="button" id="equal" value="=" onclick="calulate()"></td>
+              <td><input type="button" id="sin" value="Sin" onclick="Sin()"></td>
+            </tr>
+            <tr>
+              <td><input type="button" id="one" value="1" onclick="addInput(this.value)"></td>
+              <td><input type="button" id="two" value="2" onclick="addInput(this.value)"></td>
+              <td><input type="button" id="three" value="3" onclick="addInput(this.value)"></td>
+              <td><input type="button" id="div" value="/" onclick="addInput(this.value)"></td>
+              <td><input type="button" id="cos" value="Cos" onclick="Cos()"></td>
+            </tr>
+            <tr>
+              <td><input type="button" id="four" value="4" onclick="addInput(this.value)"></td>
+              <td><input type="button" id="five" value="5" onclick="addInput(this.value)"></td>
+              <td><input type="button" id="six" value="6" onclick="addInput(this.value)"></td>
+              <td><input type="button" id="minus" value="-" onclick="addInput(this.value)"></td>
+              <td><input type="button" id="tan" value="Tan" onclick="Tan()"></td>
+            </tr>
+            <tr>
+              <td><input type="button" id="seven" value="7" onclick="addInput(this.value)"></td>
+              <td><input type="button" id="eight" value="8" onclick="addInput(this.value)"></td>
+              <td><input type="button" id="nine" value="9" onclick="addInput(this.value)"></td>
+              <td><input type="button" id="squared" value="x^2" onclick="Squared()"></td>
+              <td><input type="button" id="browserplu" value="계산기++" onclick="Browserplu()"></td>
+            </tr>
+            <tr>
+              <td><input type="button" id="plus" value="+" onclick="addInput(this.value)"></td>
+              <td><input type="button" id="zero" value="0" onclick="addInput(this.value)"></td>
+              <td><input type="button" id="mul" value="*" onclick="addInput(this.value)"></td>
+              <td><input type="button" id="root" value="√" onclick="Root()"></td>
+              <td><input type="button" id="browsermin" value="계산기--" onclick="Browsermin()"></td>
+            </tr>
+    
+          </table>
+        </form>
+      </div>
+</body>
+
+</html>
